@@ -1,1 +1,1 @@
-# Covid-data-in-SQL-and-Tableau
+# Covid data exploration in SQL and Tableau for visualization
