@@ -10,7 +10,6 @@ from covid_data_cases
 Where continent is not null 
 order by location,date
 
-
 -- Death rates in the US 
 -- shows the likelihood of dying if you got covid in the US 
 Select Location, date, total_cases,total_deaths, (total_deaths/total_cases)*100 as Death_Percentage
@@ -86,7 +85,6 @@ Where continent is not null )
 
 select *, (new_vaccinations/ population)*100 as percentage_populaion_vaccinations_per_day
 from vacc_per_day
--- where location in('China', 'United States',....so on)
 order by location,date;
 
 -- Show the average new vaccinations per day in each country by year
@@ -98,17 +96,14 @@ Where continent is not null )
 
 select location,year, avg(cast(new_vaccinations as bigint)) as average_new_vacconations_per_day
 from vacc_per_day2
--- where location in('China', 'United States',....so on)
 group by location, year
 order by location,year
 
 -- Relationship between new cases per day and new vaccinations per day
 -- will use this dataset for scatter plot and find out their correlations
-
 select cases.location,cases.date, cases.population, cast(new_cases as int) as new_cases_per_day, 
 COALESCE(new_vaccinations, 0) as new_vaccinations_per_day
 from covid_data_cases as cases
 join covid_data_vaccination as vacc
 on cases.location = vacc.location 
 and cases.date = vacc.date
-
