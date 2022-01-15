@@ -10,7 +10,6 @@ from covid_data_cases
 Where continent is not null 
 order by location,date
 
-
 -- Death rates in the US 
 -- shows the overall chance of dying if you got covid in the US 
 Select Location, date, total_cases,total_deaths, (total_deaths/total_cases)*100 as Death_Percentage
@@ -68,7 +67,6 @@ COALESCE(total_boosters, 0) as total_boosters, population,
 from covid_data_vaccination
 Where continent is not null  and people_fully_vaccinated is not null 
 order by location, date
-
 
 -- Show number of new vaccinations per day in all countries
 -- Show percentage of populaion people vaccinations per day in all countries
